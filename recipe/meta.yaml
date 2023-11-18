@@ -18,7 +18,7 @@ requirements:
     - python >=3.6
   run:
     - python >=3.6
-    - pyiron_experimental
+    - pyiron_experimental ={{ version }}
 
 test:
   imports:
