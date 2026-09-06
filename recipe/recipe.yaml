@@ -1,0 +1,50 @@
+schema_version: 1
+
+context:
+  name: pyiron-experimental
+  version: "0.0.3"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pyiron_experimental-${{ version }}.tar.gz
+  sha256: d333970e5db6aadf976ce5abcb44c8d57a6d9fef1b2b673737ed25cfc5336167
+
+build:
+  number: 2
+  noarch: python
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+  run:
+    - python >=${{ python_min }}
+    - pyiron_experimental =${{ version }}
+
+tests:
+  - python:
+      imports:
+        - pyiron_experimental
+      pip_check: false
+      python_version:
+        - ${{ python_min }}
+        - "*"
+
+about:
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: Repository for experimental plugins to the pyiron IDE.
+  description: |
+    Repository for experimental plugins to the pyiron IDE.
+  homepage: https://github.com/pyiron/pyiron_experimental
+  repository: https://github.com/pyiron/pyiron_experimental
+  documentation: https://github.com/pyiron/pyiron_experimental
+
+extra:
+  recipe-maintainers:
+    - pyiron-runner
+    - jan-janssen
+    - pmrv
+    - niklassiemer
